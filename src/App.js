@@ -1,10 +1,19 @@
-import "./App.css";
+import { useState } from "react";
 import BasicTable from "./components/BasicTable";
+import InfoPanel from "./components/InfoPanel";
+import "./App.css";
 
 function App() {
+  const [data, setData] = useState(0);
+
+  const handleRowClick = (index) => {
+    setData(index);
+  };
+
   return (
     <div className="App">
-      <BasicTable />
+      <BasicTable getInfo={handleRowClick} />
+      <InfoPanel data={data} />
     </div>
   );
 }

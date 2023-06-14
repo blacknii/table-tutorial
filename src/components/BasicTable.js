@@ -4,7 +4,7 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "./table.css";
 
-export const BasicTable = () => {
+export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
@@ -27,7 +27,8 @@ export const BasicTable = () => {
 
   const handleRowClick = (row) => {
     setSelectedRowId(row.id);
-    console.log(row.id);
+    props.getInfo(row.id);
+    // console.log(row.id);
   };
 
   return (
