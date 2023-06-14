@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { useTable, useRowSelect } from "react-table";
+import { useTable, usePagination, useRowSelect } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "./table.css";
@@ -15,20 +15,28 @@ export const BasicTable = (props) => {
     getTableBodyProps,
     headerGroups,
     footerGroups,
-    rows,
     prepareRow,
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    state: { pageIndex },
   } = useTable(
     {
       columns,
       data,
     },
+    usePagination,
     useRowSelect
   );
 
   const handleRowClick = (row) => {
     setSelectedRowId(row.id);
     props.getInfo(row.id);
-    // console.log(row.id);
   };
 
   return (
@@ -44,7 +52,7 @@ export const BasicTable = (props) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr
@@ -75,6 +83,23 @@ export const BasicTable = (props) => {
           ))}
         </tfoot>
       </table>
+      <div>
+        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {"First"}
+        </button>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {"Previous"}
+        </button>
+        <span>
+          Page {pageIndex + 1} of {pageOptions.length}
+        </span>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          {"Next"}
+        </button>
+        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {"Last"}
+        </button>
+      </div>
     </div>
   );
 };
