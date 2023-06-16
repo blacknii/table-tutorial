@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useTable, usePagination, useRowSelect } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
-import "../style/table.css";
+import "../style/basicTable.css";
 
 export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
