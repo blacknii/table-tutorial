@@ -8,7 +8,7 @@ export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
-  const [selectedRowId, setSelectedRowId] = useState(null);
+  const [selectedRowId, setSelectedRowId] = useState(String(props.book - 1));
 
   const {
     getTableProps,
@@ -29,6 +29,7 @@ export const BasicTable = (props) => {
     {
       columns,
       data,
+      initialState: { pageIndex: props.page - 1 },
     },
     usePagination,
     useRowSelect
@@ -38,6 +39,8 @@ export const BasicTable = (props) => {
     setSelectedRowId(row.id);
     props.getInfo(parseInt(row.id) + 1);
   };
+
+  console.log(String(props.book - 1));
 
   return (
     <div>

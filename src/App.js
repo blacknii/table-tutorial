@@ -12,6 +12,8 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/table" element={<Table />} />
+          <Route path="/table/:pageId/" element={<Table />} />
+          <Route path="/table/:pageId/:bookId" element={<Table />} />
         </Routes>
       </main>
     </BrowserRouter>
