@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTable, usePagination, useRowSelect } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
@@ -8,7 +8,14 @@ export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
-  const [selectedRowId, setSelectedRowId] = useState(String(props.book - 1));
+  const [selectedRowId, setSelectedRowId] = useState(
+    String(props.page * 10 + (props.book - 1) - 10)
+  );
+
+  useEffect(() => {
+    props.getInfo(parseInt(props.book) + (props.page - 1) * 10);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     getTableProps,

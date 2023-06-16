@@ -20,8 +20,6 @@ function Table() {
     <div className="table">
       <BasicTable getInfo={handleRowClick} page={pageId} book={bookId} />
       <InfoPanel data={data} />
-      <p>page = {pageId}</p>
-      <p>book = {bookId}</p>
     </div>
   );
 }
