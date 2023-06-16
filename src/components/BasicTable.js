@@ -51,6 +51,26 @@ export const BasicTable = (props) => {
     navigate("/table/" + (pageIndex + 1) + "/" + ((parseInt(row.id) % 10) + 1));
   };
 
+  useEffect(() => {
+    gotoPage(parseInt(props.page) - 1);
+  }, [props.page, gotoPage]);
+
+  useEffect(() => {
+    // your logic to get the row id from book
+    const newSelectedRowId = String(props.page * 10 + (props.book - 1) - 10);
+    props.getInfo(parseInt(newSelectedRowId) + 1);
+    setSelectedRowId(newSelectedRowId);
+  }, [props, props.book]);
+
+  // useEffect(() => {
+  //   // convert to number and subtract one because pageIndex is zero based
+  //   const newPageIndex = parseInt(props.page) - 1;
+  //   // make sure to keep within page bounds
+  //   if (newPageIndex >= 0 && newPageIndex < pageCount) {
+  //     gotoPage(newPageIndex);
+  //   }
+  // }, [props.page]);
+
   return (
     <div>
       <table {...getTableProps()}>
