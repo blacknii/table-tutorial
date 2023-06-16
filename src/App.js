@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BasicTable from "./components/BasicTable";
 import InfoPanel from "./components/InfoPanel";
-import "./App.css";
+import "./style/App.css";
 
 function App() {
   const [data, setData] = useState(0);

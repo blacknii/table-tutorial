@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useTable, usePagination, useRowSelect } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
-import "./table.css";
+import "../style/table.css";
 
 export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
@@ -36,7 +36,7 @@ export const BasicTable = (props) => {
 
   const handleRowClick = (row) => {
     setSelectedRowId(row.id);
-    props.getInfo(row.id);
+    props.getInfo(parseInt(row.id) + 1);
   };
 
   return (

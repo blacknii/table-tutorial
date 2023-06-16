@@ -1,6 +1,6 @@
 import React from "react";
 import MOCK_DATA from "./MOCK_DATA.json";
-import "./info.css";
+import "../style/info.css";
 
 const showInfo = (index) => {
   return JSON.stringify(
