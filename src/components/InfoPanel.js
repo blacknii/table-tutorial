@@ -3,7 +3,11 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import "./info.css";
 
 const showInfo = (index) => {
-  return JSON.stringify(MOCK_DATA.filter((row) => row.id === parseInt(index)));
+  return JSON.stringify(
+    MOCK_DATA.filter((row) => row.id === parseInt(index)),
+    null,
+    2
+  );
 };
 
 const InfoPanel = (props) => {
