@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //pages
 import Home from "./components/Home";
 import Table from "./components/Table";
-import Books from "./components/useBooksData";
-import Authors from "./components/Auhors";
+// import Books from "./components/useBooksData";
+// import Authors from "./components/Auhors";
 
 function App() {
   return (
