@@ -8,6 +8,7 @@ import { useBooksData } from "./useBooksData";
 
 function Table() {
   const params = useParams();
+  const author = params.author;
   const pageId = params.pageId;
   const bookId = params.bookId;
 
@@ -16,8 +17,8 @@ function Table() {
   const handleRowClick = (index) => {
     setData(index);
   };
-
-  const BooksData = useBooksData("J. R. R. Tolkien");
+  //J. R. R. Tolkien
+  const BooksData = useBooksData(author);
 
   return (
     <div className="table">
@@ -25,6 +26,7 @@ function Table() {
         getInfo={handleRowClick}
         page={pageId}
         book={bookId}
+        author={author}
         BooksData={BooksData}
       />
       <InfoPanel data={data} BooksData={BooksData} />

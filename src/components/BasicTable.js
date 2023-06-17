@@ -58,7 +58,14 @@ export const BasicTable = (props) => {
     setSelectedRowId(row.id);
     props.getInfo(row.allCells[0].value);
     // console.log(row.allCells[0].value);
-    navigate("/table/" + (pageIndex + 1) + "/" + row.allCells[0].value);
+    navigate(
+      "/table/" +
+        props.author +
+        "/" +
+        (pageIndex + 1) +
+        "/" +
+        row.allCells[0].value
+    );
   };
 
   useEffect(() => {
@@ -81,7 +88,7 @@ export const BasicTable = (props) => {
     setSelectedRowId(newId);
     // const newSelectedRowId = String(props.page * 10 + (props.book - 1) - 10);
     props.getInfo(props.book);
-  }, [props, props.book]);
+  }, [props, props.book, page]);
 
   // useEffect(() => {
   //   // convert to number and subtract one because pageIndex is zero based
@@ -140,7 +147,7 @@ export const BasicTable = (props) => {
         <button
           onClick={() => {
             gotoPage(0);
-            navigate("/table/1");
+            navigate("/table/" + props.author);
           }}
           disabled={!canPreviousPage}
         >
@@ -149,7 +156,7 @@ export const BasicTable = (props) => {
         <button
           onClick={() => {
             previousPage();
-            navigate("/table/" + pageIndex);
+            navigate("/table/" + props.author + "/" + pageIndex);
           }}
           disabled={!canPreviousPage}
         >
@@ -161,7 +168,7 @@ export const BasicTable = (props) => {
         <button
           onClick={() => {
             nextPage();
-            navigate("/table/" + (pageIndex + 2));
+            navigate("/table/" + props.author + "/" + (pageIndex + 2));
           }}
           disabled={!canNextPage}
         >
@@ -170,7 +177,7 @@ export const BasicTable = (props) => {
         <button
           onClick={() => {
             gotoPage(pageCount - 1);
-            navigate("/table/" + pageCount);
+            navigate("/table/" + props.author + "/" + pageCount);
           }}
           disabled={!canNextPage}
         >

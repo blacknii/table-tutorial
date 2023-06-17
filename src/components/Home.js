@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="home">
       <h1>HOME</h1>
-      <Link to={"table"}>go to table</Link>
+      <Link to={"table/J. R. R. Tolkien/1"}>go to table</Link>
     </div>
   );
 }

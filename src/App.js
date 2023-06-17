@@ -13,9 +13,13 @@ function App() {
       <main>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/table" element={<Navigate to="/table/1" />} />
-          <Route path="/table/:pageId/" element={<Table />} />
-          <Route path="/table/:pageId/:bookId" element={<Table />} />
+          <Route
+            path="/table"
+            element={<Navigate to="/table/J. R. R. Tolkien/1" />}
+          />
+          <Route path="/table/:author/" element={<Table />} />
+          <Route path="/table/:author/:pageId/" element={<Table />} />
+          <Route path="/table/:author/:pageId/:bookId" element={<Table />} />
         </Routes>
       </main>
       {/* <Books author={"James Brennan"} /> */}
