@@ -11,7 +11,6 @@ function Authors() {
       const data = await response.json();
 
       if (data.items && data.items.length > 0) {
-        // Extract authors from the fetched books and add them to the state
         const newAuthors = data.items.flatMap((item) =>
           item.volumeInfo.authors ? item.volumeInfo.authors : []
         );
@@ -23,7 +22,7 @@ function Authors() {
     };
 
     fetchAuthors();
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []);
 
   return (
     <div>

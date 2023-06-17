@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Books() {
+function Books({ author }) {
   const [books, setBooks] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
   const [totalBooks, setTotalBooks] = useState(0);
@@ -8,12 +8,11 @@ function Books() {
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"JK Rowling"&startIndex=${startIndex}&maxResults=40&langRestrict=en`
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${author}"&startIndex=${startIndex}&maxResults=40&langRestrict=en`
       );
       const data = await response.json();
 
       if (data.items && data.items.length > 0) {
-        // Sort the fetched books by their published date
         data.items.sort((a, b) => {
           if (a.volumeInfo.publishedDate < b.volumeInfo.publishedDate) {
             return 1;
@@ -31,19 +30,17 @@ function Books() {
     };
 
     fetchBooks();
-  }, [startIndex]);
+  }, [startIndex, author]);
 
   if (startIndex < totalBooks) {
     return <div>Loading...</div>;
   }
 
-  console.log(books[0]);
-
   return (
     <div>
       {books.map((book, index) => (
-        <div key={index}>
-          <h2>{book.volumeInfo.title}</h2>
+        <div key={index} className="border-style: solid">
+          <h3>{book.volumeInfo.title}</h3>
           <p>{book.volumeInfo.description}</p>
           <p>ID: {book.id}</p>
           <p>

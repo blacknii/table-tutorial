@@ -18,7 +18,7 @@ function App() {
           <Route path="/table/:pageId/:bookId" element={<Table />} />
         </Routes>
       </main>
-      {/* <Books /> */}
+      <Books author={"James Brennan"} />
       <Authors />
     </BrowserRouter>
   );
