@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //pages
 import Home from "./components/Home";
 import Table from "./components/Table";
+import Books from "./components/Books";
+import Authors from "./components/Auhors";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/table/:pageId/:bookId" element={<Table />} />
         </Routes>
       </main>
+      {/* <Books /> */}
+      <Authors />
     </BrowserRouter>
   );
 }
