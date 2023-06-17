@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //pages
 import Home from "./components/Home";
 import Table from "./components/Table";
-import Books from "./components/Books";
+import Books from "./components/useBooksData";
 import Authors from "./components/Auhors";
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
           <Route path="/table/:pageId/:bookId" element={<Table />} />
         </Routes>
       </main>
-      <Books author={"James Brennan"} />
-      <Authors />
+      {/* <Books author={"James Brennan"} /> */}
+      {/* <Authors /> */}
     </BrowserRouter>
   );
 }

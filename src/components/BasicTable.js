@@ -4,10 +4,13 @@ import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import "../style/basicTable.css";
 import { useNavigate } from "react-router-dom";
+import { useBooksData } from "./useBooksData";
 
 export const BasicTable = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
+
+  console.log(useBooksData("James Brennan"));
 
   const navigate = useNavigate();
 
