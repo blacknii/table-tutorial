@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicTable from "./BasicTable";
 import InfoPanel from "./InfoPanel";
 import "../style/table.css";
@@ -6,7 +6,7 @@ import "../style/table.css";
 import { useParams } from "react-router-dom";
 import { useBooksData } from "./useBooksData";
 
-function Table() {
+function Table(props) {
   const params = useParams();
   const author = params.author;
   const pageId = params.pageId;
@@ -19,6 +19,15 @@ function Table() {
   };
   //J. R. R. Tolkien
   const BooksData = useBooksData(author);
+
+  // console.log(author);
+
+  useEffect(() => {
+    // console.log(author);
+    props.breadcrumbsNavigation(author, 1);
+    props.breadcrumbsNavigation(pageId, 2);
+    props.breadcrumbsNavigation(bookId, 3);
+  }, [author, pageId, bookId]);
 
   return (
     <div className="table">
