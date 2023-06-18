@@ -1,7 +1,10 @@
 .breadcrumbs {
   font-family: Arial, Helvetica, sans-serif;
   color: #457b9d; /* Blue color for the text */
-  padding: 10px;
+  position: absolute; /* Fix position to the viewport */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the right */
+  margin: 3rem;
 }
 
 .breadcrumbs a {

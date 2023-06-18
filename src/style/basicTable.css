@@ -20,8 +20,7 @@ table tr:hover {
   transition: background-color 0.3s ease;
 }
 
-table th,
-tfoot td {
+table th {
   padding-top: 15px;
   padding-bottom: 15px;
   text-align: center;
@@ -35,7 +34,7 @@ tfoot td {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  padding: 1rem;
   color: #1d3557;
   font-size: 1rem;
 }
@@ -61,4 +60,30 @@ tfoot td {
 
 .pagination span {
   color: #457b9d;
+}
+
+@media (max-width: 1000px) {
+  table {
+    font-size: 0.8rem;
+  }
+
+  table td,
+  table th {
+    padding: 8px 10px;
+  }
+
+  .pagination {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .pagination button {
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  table {
+    font-size: 0.6rem;
+  }
 }

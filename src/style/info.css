@@ -1,11 +1,16 @@
 .info {
-  width: 800px;
-  height: 800px;
+  max-width: 100%;
   border: 1px solid #a8dadc;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
   background-color: #f1faee;
   padding: 20px;
   overflow: auto;
+}
+
+.book-empty {
+  color: #457b9d;
+
+  text-align: center;
 }
 
 .book-info {

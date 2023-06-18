@@ -5,7 +5,12 @@ import defaultCover from "./default_cover.jpg"; // make sure the path to your im
 const InfoPanel = (props) => {
   const showInfo = (index) => {
     const book = props.BooksData.find((row) => row.id === index);
-    if (!book) return null;
+    if (!book)
+      return (
+        <div className="book-empty">
+          <h2>Select a row for more information</h2>
+        </div>
+      );
 
     return (
       <div className="book-info">
@@ -32,10 +37,10 @@ const InfoPanel = (props) => {
             <strong>Categories:</strong> {book.categories || "N/A"}
           </p>
           <p>
-            <strong>Description:</strong> {book.description || "N/A"}
+            <strong>Snippet:</strong> {book.snippet || "N/A"}
           </p>
           <p>
-            <strong>Snippet:</strong> {book.snippet || "N/A"}
+            <strong>Description:</strong> {book.description || "N/A"}
           </p>
         </div>
       </div>
