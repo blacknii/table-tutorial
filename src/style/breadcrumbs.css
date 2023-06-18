@@ -1,0 +1,23 @@
+.breadcrumbs {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #457b9d; /* Blue color for the text */
+  padding: 10px;
+}
+
+.breadcrumbs a {
+  color: #457b9d; /* Blue color for the links */
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: #e63946; /* Red color for hover */
+}
+
+.breadcrumbs a::after {
+  content: " - ";
+  color: #1d3557; /* Dark blue color for the separator */
+}
+
+.breadcrumbs a:last-child::after {
+  content: "";
+}

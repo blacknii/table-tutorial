@@ -143,7 +143,7 @@ export const BasicTable = (props) => {
           ))}
         </tfoot>
       </table>
-      <div>
+      <div className="pagination">
         <button
           onClick={() => {
             gotoPage(0);

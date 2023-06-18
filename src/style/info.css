@@ -1,3 +1,29 @@
 .info {
+  width: 800px;
+  height: 800px;
+  border: 1px solid #a8dadc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  background-color: #f1faee;
+  padding: 20px;
+  overflow: auto;
+}
+
+.book-info {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.book-image {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.book-details h2 {
+  color: #1d3557;
+  margin-bottom: 10px;
+}
+
+.book-details p {
+  color: #457b9d;
 }

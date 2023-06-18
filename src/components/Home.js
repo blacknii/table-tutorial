@@ -1,3 +1,5 @@
+// Home.js
+
 import { useState } from "react";
 import "../style/home.css";
 import { Link } from "react-router-dom";
@@ -36,23 +38,27 @@ function Home() {
 
   return (
     <div className="home">
-      <h1>HOME</h1>
+      <h1 className="title">AUTHORS</h1>
+      <h2 className="subtitle">Search for an Author</h2>
       <div className="search">
         <input
           type="text"
           placeholder="Enter Your Author Name"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={handleKeyPress} // added handleKeyPress event
         />
-        <button onClick={searchBook}>search</button>
+        <button onClick={searchBook} className="searchButton">
+          search
+        </button>
       </div>
-      <br />
-      <Link to={"table/J. R. R. Tolkien/1"}>go to table</Link>
-      {authors.map((author) => (
-        <Link to={`table/${author}/1`}>
-          <h3 className="title">{author}</h3>
-        </Link>
-      ))}
+      <div className="authors">
+        {authors.map((author) => (
+          <Link to={`table/${author}/1`} className="authorLink">
+            <h3 className="authorName">{author}</h3>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

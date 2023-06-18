@@ -1,28 +1,64 @@
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 700px;
+  width: 100%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
 }
 
 table td,
 table th {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border: 1px solid #a8dadc; /* Light blue for the border */
+  padding: 12px 15px;
 }
 
 table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f1faee; /* Off white for every other row */
 }
 
 table tr:hover {
-  background-color: #ddd;
+  background-color: #e63946; /* Red for hover */
+  transition: background-color 0.3s ease;
 }
 
 table th,
 tfoot td {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-align: center;
-  background-color: #04aa6d;
+  background-color: #1d3557; /* Dark blue for headers */
   color: white;
+  font-weight: 600;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: #1d3557;
+  font-size: 1rem;
+}
+
+.pagination button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #e63946;
+  color: #f1faee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #457b9d;
+}
+
+.pagination button:disabled {
+  background-color: #a8dadc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: #457b9d;
 }
