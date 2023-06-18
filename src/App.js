@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Table from "./components/Table";
 import Breadcrumbs from "./components/Breadcrumbs";
 import { useEffect, useState } from "react";
+import NotFound from "./components/NotFound";
 // import Books from "./components/useBooksData";
 // import Authors from "./components/Auhors";
 
@@ -81,6 +82,7 @@ function App() {
             path="/table/:author/:pageId/:bookId"
             element={<Table breadcrumbsNavigation={breadcrumbsNavigation} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {/* <Books author={"James Brennan"} /> */}

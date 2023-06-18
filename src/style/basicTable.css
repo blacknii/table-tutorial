@@ -11,13 +11,9 @@ table th {
   padding: 12px 15px;
 }
 
-table tr:nth-child(even) {
-  background-color: #f1faee; /* Off white for every other row */
-}
-
-table tr:hover {
-  background-color: #e63946; /* Red for hover */
-  transition: background-color 0.3s ease;
+table tr {
+  cursor: pointer;
+  background-color: white;
 }
 
 table th {
@@ -27,6 +23,7 @@ table th {
   background-color: #1d3557; /* Dark blue for headers */
   color: white;
   font-weight: 600;
+  cursor: auto;
 }
 
 .pagination {

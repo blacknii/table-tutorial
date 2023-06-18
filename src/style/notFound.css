@@ -1,0 +1,27 @@
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+}
+
+.notfound h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.notfound p {
+  font-size: 1.2em;
+}
+
+.notfound a {
+  color: #457b9d;
+  text-decoration: none;
+}
+
+.notfound a:hover {
+  color: #e63946;
+}
