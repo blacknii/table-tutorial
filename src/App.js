@@ -10,20 +10,53 @@ import { useEffect, useState } from "react";
 // import Authors from "./components/Auhors";
 
 function App() {
-  const [arr, setArr] = useState(["Search", undefined, undefined, undefined]);
+  const [arr, setArr] = useState([
+    ["/", "Search"],
+    [undefined, undefined],
+    [undefined, undefined],
+    [undefined, undefined],
+  ]);
+
+  // function App() {
+  //   const [arr, setArr] = useState([
+  //     ["/", "Search"],
+  //     ["/table/Andrzej Sapkowski/1", undefined],
+  //     ["/table/Andrzej Sapkowski/1", undefined],
+  //     ["/table/Andrzej Sapkowski/1/dDigzwEACAAJ", undefined],
+  //   ]);
 
   const breadcrumbsNavigation = (value, index) => {
     setArr((prevArr) => {
       const newArr = [...prevArr];
-      newArr[index] = value;
-      console.log(value, index);
+      newArr[index][1] = value;
+      console.log("----------------");
+      newArr.forEach((e, i) => {
+        console.log(e, i);
+        if (i === 1 && e[1] !== undefined) {
+          console.log((e[0] = "/table/" + newArr[1][1] + "/" + "1"));
+        } else if (i === 2 && e[1] !== undefined) {
+          console.log((e[0] = "/table/" + newArr[1][1] + "/" + newArr[2][1]));
+        } else if (i === 3 && e[1] !== undefined) {
+          console.log(
+            (e[0] =
+              "/table/" +
+              newArr[1][1] +
+              "/" +
+              newArr[2][1] +
+              "/" +
+              newArr[3][1])
+          );
+        }
+      });
       console.log(newArr);
+      // console.log(value, index);
+      // console.log(newArr);
       return newArr;
     });
   };
 
   useEffect(() => {
-    console.log(arr);
+    // console.log(arr);
   }, [arr]);
 
   return (

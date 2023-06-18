@@ -1,14 +1,14 @@
-// useBooksData.js
 import { useEffect, useState } from "react";
 
 export function useBooksData(author) {
   const [books, setBooks] = useState([]);
+  const [bookIDs, setBookIDs] = useState(new Set());
   const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${author}"&startIndex=${startIndex}&maxResults=40&langRestrict=en`
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${author}"&startIndex=${startIndex}&maxResults=40`
       );
       const data = await response.json();
 
@@ -23,31 +23,40 @@ export function useBooksData(author) {
           return 0;
         });
 
-        const processedBooks = data.items.map((book) => {
-          return {
-            id: book.id,
-            title: book.volumeInfo.title,
-            description: book.volumeInfo.description,
-            categories: book.volumeInfo.categories
-              ? book.volumeInfo.categories.join(", ")
-              : "N/A",
-            publisher: book.volumeInfo.publisher,
-            publishedDate: book.volumeInfo.publishedDate,
-            pageCount: book.volumeInfo.pageCount,
-            snippet: book.searchInfo && book.searchInfo.textSnippet,
-            thumbnail:
-              book.volumeInfo.imageLinks &&
-              book.volumeInfo.imageLinks.thumbnail,
-          };
-        });
+        const processedBooks = data.items.reduce((newBooks, book) => {
+          if (!bookIDs.has(book.id)) {
+            newBooks.push({
+              id: book.id,
+              title: book.volumeInfo.title,
+              description: book.volumeInfo.description,
+              categories: book.volumeInfo.categories
+                ? book.volumeInfo.categories.join(", ")
+                : "N/A",
+              publisher: book.volumeInfo.publisher,
+              publishedDate: book.volumeInfo.publishedDate,
+              pageCount: book.volumeInfo.pageCount,
+              language: book.volumeInfo.language,
+              snippet: book.searchInfo && book.searchInfo.textSnippet,
+              thumbnail:
+                book.volumeInfo.imageLinks &&
+                book.volumeInfo.imageLinks.thumbnail,
+            });
+            bookIDs.add(book.id);
+          }
+
+          return newBooks;
+        }, []);
 
         setBooks((prevBooks) => [...prevBooks, ...processedBooks]);
-        setStartIndex((prevStartIndex) => prevStartIndex + data.items.length);
+        setBookIDs(bookIDs);
+        setStartIndex(
+          (prevStartIndex) => prevStartIndex + processedBooks.length
+        );
       }
     };
 
     fetchBooks();
-  }, [startIndex, author]);
+  }, [startIndex, author, bookIDs]);
 
   return books;
 }

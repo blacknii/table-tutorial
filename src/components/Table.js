@@ -12,6 +12,8 @@ function Table(props) {
   const pageId = params.pageId;
   const bookId = params.bookId;
 
+  console.log(params, author, pageId, bookId);
+
   const [data, setData] = useState(0);
 
   const handleRowClick = (index) => {

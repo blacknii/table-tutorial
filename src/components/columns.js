@@ -24,4 +24,9 @@ export const COLUMNS = [
     Footer: "Categories",
     accessor: "categories",
   },
+  {
+    Header: "Language",
+    Footer: "Language",
+    accessor: "language",
+  },
 ];
